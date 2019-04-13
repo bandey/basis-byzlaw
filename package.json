@@ -1,0 +1,16 @@
+{
+  "name": "basis-byzlaw",
+  "version": "0.1.0",
+  "description": "Backend basis for project Byzantine Law and Acts",
+  "private": true,
+  "author": "Dmitrii Kondratev <origbandey@gmail.com>",
+  "license": "MIT",
+  "main": "basis-byzlaw.js",
+  "scripts": {
+    "test": "echo \"Skip: no test specified\" && exit 0",
+    "start": "node basis-byzlaw.js"
+  },
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
