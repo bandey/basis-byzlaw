@@ -9,7 +9,7 @@
   "scripts": {
     "test": "echo \"Skip: no test specified\" && exit 0",
     "debug": "cross-env DEBUG=main,server:* node basis-byzlaw.js",
-    "start": "node basis-byzlaw.js"
+    "start": "cross-env NODE_ENV=production node basis-byzlaw.js"
   },
   "dependencies": {
     "convict": "^5.0.0",
