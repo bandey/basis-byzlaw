@@ -1,3 +1,4 @@
+const debug = require('debug')('server:server');
 const express = require('express');
 const http = require('http');
 
@@ -5,15 +6,16 @@ const expressServer = express();
 const httpServer = http.createServer(expressServer);
 
 httpServer.on('listening', () => {
-  console.log('Listening on port %s', httpServer.address().port);
+  debug('Listening on port %s', httpServer.address().port);
 });
 
 expressServer.get('/', (req, res) => {
+  debug('%s from %s', req.method, req.connection.remoteAddress.replace(/.*\:/, ''));
   return res.send('Hello world!');
 });
 
 httpServer.on('error', (err) => {
-  console.error('>> %s\n%s\n%s', err.name, err.message, err.stack);
+  debug('CRASH http server\n%s', err.message);
   process.exit(2);
 });
 

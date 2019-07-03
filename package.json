@@ -8,10 +8,13 @@
   "main": "basis-byzlaw.js",
   "scripts": {
     "test": "echo \"Skip: no test specified\" && exit 0",
+    "debug": "cross-env DEBUG=main,server:* node basis-byzlaw.js",
     "start": "node basis-byzlaw.js"
   },
   "dependencies": {
     "convict": "^5.0.0",
+    "cross-env": "^5.2.0",
+    "debug": "^4.1.1",
     "express": "^4.16.4"
   }
 }
