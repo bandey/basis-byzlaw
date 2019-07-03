@@ -1,6 +1,6 @@
 const debug = require('debug')('main');
 const config = require('./config/config.js');
-const server = require('./server/server.js');
+const server = require('./server/server-transport.js');
 
 debug('LAUNCH');
 
