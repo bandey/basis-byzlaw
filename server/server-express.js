@@ -17,6 +17,9 @@ serverExpress.use((req, res, next) => {
   return next();
 });
 
+// Configure static content
+serverExpress.use(express.static(path.join(__dirname, '../public')));
+
 // Configure views
 serverExpress.set('views', path.join(__dirname, '../views'));
 serverExpress.set('view engine', 'ejs');
