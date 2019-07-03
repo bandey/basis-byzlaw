@@ -1,10 +1,11 @@
-const debug = require('debug')('server:express');
+const logger = require('../tooling/logger.js')('server:express');
 const express = require('express');
 
 const serverExpress = express();
 
 serverExpress.get('/', (req, res) => {
-  debug('%s from %s', req.method, req.connection.remoteAddress.replace(/.*\:/, ''));
+  logger.log('>> %s %s from %s\n%s', logger.getNow(), req.method,
+      req.connection.remoteAddress.replace(/.*\:/, ''), req.url);
   return res.send('Hello world!');
 });
 
