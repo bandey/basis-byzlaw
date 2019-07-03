@@ -13,6 +13,24 @@ const config = convict({
     format: ['production', 'development'],
     default: 'development',
   },
+  serverHTTPS: {
+    doc: 'Server secure protocol: true - https, false - http',
+    env: 'SERV_HTTPS',
+    format: Boolean,
+    default: false,
+  },
+  pathHTTPSKey: {
+    doc: 'Path to file with HTTPS key',
+    env: 'PATH_HTTPS_KEY',
+    format: String,
+    default: 'certs/localhost.key',
+  },
+  pathHTTPSCrt: {
+    doc: 'Path to file with HTTPS certificate',
+    env: 'PATH_HTTPS_CRT',
+    format: String,
+    default: 'certs/localhost.crt',
+  },
   serverPort: {
     doc: 'Port to bind http or https server',
     env: 'SERV_PORT',

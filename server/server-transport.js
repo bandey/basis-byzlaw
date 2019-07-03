@@ -1,8 +1,20 @@
 const logger = require('../tooling/logger.js')('server:transport');
+const config = require('../config/config.js');
 const http = require('http');
+const https = require('https');
+const fs = require('fs');
 const serverExpress = require('./server-express.js');
 
-const serverTransport = http.createServer(serverExpress);
+let serverTransport;
+
+if (config.get('serverHTTPS')) {
+  serverTransport = https.createServer({
+    key:  fs.readFileSync(config.get('pathHTTPSKey')),
+    cert: fs.readFileSync(config.get('pathHTTPSCrt')),
+  }, serverExpress);
+} else {
+  serverTransport = http.createServer(serverExpress);
+};
 
 serverTransport.on('listening', () => {
   logger.log('Listening on port %s', serverTransport.address().port);
