@@ -11,6 +11,7 @@ if (!process.env.npm_package_name) { // was launched not from 'npm run'
 const superAgent = require('supertest');
 
 const config = require('../../config/config.js');
+config.set('loggerMode', 'none');
 
 const serverExpress = require('../../server/server-express.js');
 serverExpress.set('port', config.get('serverPort'));
