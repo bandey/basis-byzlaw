@@ -27,7 +27,7 @@ serverExpress.set('layout', 'layout-main');
 serverExpress.use(ejsLayouts);
 
 serverExpress.get('/', (req, res) => {
-  return res.render('welcome');
+  return res.render('hello');
 });
 
 // Catch 404 error
