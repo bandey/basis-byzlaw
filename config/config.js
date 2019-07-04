@@ -37,6 +37,12 @@ const config = convict({
     format: 'port',
     default: 8080,
   },
+  loggerMode: {
+    doc: 'Mode of logger output',
+    env: 'LOG_MODE',
+    format: ['none', 'error', 'log', 'both'],
+    default: 'both',
+  },
 });
 
 if (config.get('configFile')) {

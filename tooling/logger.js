@@ -1,3 +1,4 @@
+const config = require('../config/config.js');
 const debug = require('debug');
 
 const timeLocale = 'ru';
@@ -16,11 +17,17 @@ function loggerGetNow() {
 };
 
 function loggerError() {
-  console.log.apply(console, arguments);
+  const mode = config.get('loggerMode');
+  if ((mode === 'both') || (mode === 'error')) {
+    console.log.apply(console, arguments);
+  }
 };
 
 function loggerLog() {
-  console.log.apply(console, arguments);
+  const mode = config.get('loggerMode');
+  if ((mode === 'both') || (mode === 'log')) {
+    console.log.apply(console, arguments);
+  }
 };
 
 function createLogger(namespace) {
