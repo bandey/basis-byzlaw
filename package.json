@@ -7,7 +7,7 @@
   "license": "MIT",
   "main": "basis-byzlaw.js",
   "scripts": {
-    "test": "echo \"Skip: no test specified\" && exit 0",
+    "test": "cross-env tape tests/**/*.spec.js | tap-dot",
     "debug": "cross-env DEBUG=main,server:* node basis-byzlaw.js",
     "start": "cross-env NODE_ENV=production node basis-byzlaw.js"
   },
@@ -18,5 +18,12 @@
     "ejs": "^2.6.2",
     "express": "^4.16.4",
     "express-ejs-layouts": "^2.5.0"
+  },
+  "devDependencies": {
+    "supertest": "^4.0.2",
+    "tap-diff": "^0.1.1",
+    "tap-dot": "^2.0.0",
+    "tape": "^4.11.0",
+    "tape-catch": "^1.0.6"
   }
 }
