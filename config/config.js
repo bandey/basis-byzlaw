@@ -1,4 +1,5 @@
 const convict = require('convict');
+const bytes = require('bytes');
 
 const config = convict({
   configFile: {
@@ -43,12 +44,23 @@ const config = convict({
     format: ['none', 'error', 'log', 'both'],
     default: 'both',
   },
+  gzipThreshold: {
+    doc: 'Threshold for server response size before compression is used',
+    env: 'GZIP_THRESHOLD',
+    format: (val) => { // Number or String
+      const result = bytes.parse(val);
+      if ((!result) && (result !== 0)) {
+        throw new Error('must be a number of bytes or any string accepted by the bytes module')
+      }
+    },
+    default: '5kb',
+  },
 });
 
 if (config.get('configFile')) {
   config.loadFile(config.get('configFile'));
 }
- 
+
 config.validate({allowed: 'strict'});
  
 module.exports = config;

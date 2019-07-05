@@ -2,6 +2,7 @@ const logger = require('../tooling/logger.js')('server:express');
 const config = require('../config/config.js');
 const express = require('express');
 const path = require('path');
+const compression = require('compression');
 const ejsLayouts = require('express-ejs-layouts');
 const security = require('./security.js');
 const router = require('./router.js');
@@ -18,6 +19,9 @@ serverExpress.use((req, res, next) => {
   res.locals = {now};
   return next();
 });
+
+// Configure compression
+serverExpress.use(compression({threshold: config.get('gzipThreshold')}));
 
 // Configure static content
 serverExpress.use(express.static(path.join(__dirname, '../public')));
