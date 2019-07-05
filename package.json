@@ -17,7 +17,9 @@
     "debug": "^4.1.1",
     "ejs": "^2.6.2",
     "express": "^4.16.4",
-    "express-ejs-layouts": "^2.5.0"
+    "express-ejs-layouts": "^2.5.0",
+    "helmet": "^3.18.0",
+    "hpp": "^0.2.2"
   },
   "devDependencies": {
     "supertest": "^4.0.2",

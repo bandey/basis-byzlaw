@@ -3,6 +3,7 @@ const config = require('../config/config.js');
 const express = require('express');
 const path = require('path');
 const ejsLayouts = require('express-ejs-layouts');
+const security = require('./security.js');
 const router = require('./router.js');
 
 const serverExpress = express();
@@ -26,6 +27,9 @@ serverExpress.set('views', path.join(__dirname, '../views'));
 serverExpress.set('view engine', 'ejs');
 serverExpress.set('layout', 'layout-main');
 serverExpress.use(ejsLayouts);
+
+// Configure HTTP protection 
+serverExpress.use(security.helmet);
 
 // Configure routes
 serverExpress.use('/', router);
