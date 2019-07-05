@@ -3,6 +3,7 @@ const config = require('../config/config.js');
 const express = require('express');
 const path = require('path');
 const ejsLayouts = require('express-ejs-layouts');
+const router = require('./router.js');
 
 const serverExpress = express();
 
@@ -26,9 +27,8 @@ serverExpress.set('view engine', 'ejs');
 serverExpress.set('layout', 'layout-main');
 serverExpress.use(ejsLayouts);
 
-serverExpress.get('/', (req, res) => {
-  return res.render('hello');
-});
+// Configure routes
+serverExpress.use('/', router);
 
 // Catch 404 error
 serverExpress.use((req, res, next) => {
