@@ -11,7 +11,7 @@ const config = convict({
   nodeEnv: {
     doc: 'Applicaton environment',
     env: 'NODE_ENV',
-    format: ['production', 'development'],
+    format: ['development', 'test', 'production'],
     default: 'development',
   },
   loggerMode: {

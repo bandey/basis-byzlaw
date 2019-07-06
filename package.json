@@ -7,7 +7,7 @@
   "license": "MIT",
   "main": "basis-byzlaw.js",
   "scripts": {
-    "test": "cross-env tape tests/**/*.spec.js | tap-dot",
+    "test": "jest",
     "debug": "cross-env DEBUG=main,server:* node basis-byzlaw.js",
     "start": "cross-env NODE_ENV=production node basis-byzlaw.js"
   },
@@ -25,10 +25,7 @@
     "mongoose": "^5.6.3"
   },
   "devDependencies": {
-    "supertest": "^4.0.2",
-    "tap-diff": "^0.1.1",
-    "tap-dot": "^2.0.0",
-    "tape": "^4.11.0",
-    "tape-catch": "^1.0.6"
+    "jest": "^24.8.0",
+    "supertest": "^4.0.2"
   }
 }
