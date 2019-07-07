@@ -14,6 +14,12 @@ const config = convict({
     format: ['production', 'development'],
     default: 'development',
   },
+  loggerMode: {
+    doc: 'Mode of logger output',
+    env: 'LOG_MODE',
+    format: ['none', 'error', 'log', 'both'],
+    default: 'both',
+  },
   serverHTTPS: {
     doc: 'Server secure protocol: true - https, false - http',
     env: 'SERV_HTTPS',
@@ -38,12 +44,6 @@ const config = convict({
     format: 'port',
     default: 8080,
   },
-  loggerMode: {
-    doc: 'Mode of logger output',
-    env: 'LOG_MODE',
-    format: ['none', 'error', 'log', 'both'],
-    default: 'both',
-  },
   gzipThreshold: {
     doc: 'Threshold for server response size before compression is used',
     env: 'GZIP_THRESHOLD',
@@ -55,6 +55,18 @@ const config = convict({
     },
     default: '5kb',
   },
+  dbConnect: {
+    doc: 'Configuration string for MongoDB connection',
+    env: 'DB_CONNECT',
+    format: String,
+    default: 'mongodb://localhost/test',
+  },
+  dbAutoIndex: {
+    doc: 'MongoDB autoIndex setting: true - useful for development, false - faster for production',
+    env: 'DB_AUTOINDEX',
+    format: Boolean,
+    default: false,
+  },
 });
 
 if (config.get('configFile')) {
@@ -62,5 +74,12 @@ if (config.get('configFile')) {
 }
 
 config.validate({allowed: 'strict'});
+
+config.getDBOptions = () => {
+  return {
+    autoIndex: config.get('dbAutoIndex'),
+    useNewUrlParser: true,
+  };
+};
  
 module.exports = config;

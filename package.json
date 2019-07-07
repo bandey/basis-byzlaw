@@ -21,7 +21,8 @@
     "express": "^4.16.4",
     "express-ejs-layouts": "^2.5.0",
     "helmet": "^3.18.0",
-    "hpp": "^0.2.2"
+    "hpp": "^0.2.2",
+    "mongoose": "^5.6.3"
   },
   "devDependencies": {
     "supertest": "^4.0.2",
