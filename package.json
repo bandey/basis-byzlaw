@@ -1,6 +1,6 @@
 {
   "name": "basis-byzlaw",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Backend basis for project Byzantine Law and Acts",
   "private": true,
   "author": "Dmitrii Kondratev <origbandey@gmail.com>",
