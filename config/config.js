@@ -79,6 +79,7 @@ config.getDBOptions = () => {
   return {
     autoIndex: config.get('dbAutoIndex'),
     useNewUrlParser: true,
+    useUnifiedTopology: true,
   };
 };
  
